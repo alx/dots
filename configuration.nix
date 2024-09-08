@@ -97,9 +97,6 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "alx";
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -108,6 +105,8 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    kitty
+    kitty-themes
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -140,4 +139,6 @@
   services.udev.extraRules = ''
     KERNEL=="ttyACM0", MODE:="666"
   '';
+
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 }

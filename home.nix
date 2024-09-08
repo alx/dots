@@ -17,6 +17,14 @@
     flameshot
     unzip
     owncast
+    element-desktop
+    imagemagick
+    jq
+    neofetch
+    wget
+    krita
+    gimp
+    file
   ];
 
   programs.emacs = {
@@ -26,6 +34,9 @@
       epkgs.magit
     ];
   };
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -52,8 +63,16 @@
     userEmail = "git@alexgirard.com";
   };
 
-  programs.kitty.enable = true; # required for the default Hyprland config
-  programs.waybar.enable = true; # required for the default Hyprland config
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "BitstreamVeraSansMono Nerd Font";
+      size = 16;
+    };
+    theme = "Catppuccin-Macchiato";
+    #Also available: Catppuccin-Frappe Catppuccin-Latte Catppuccin-Macchiato Catppuccin-Mocha
+    # See all available kitty themes at: https://github.com/kovidgoyal/kitty-themes/blob/46d9dfe230f315a6a0c62f4687f6b3da20fd05e4/themes.json
+  };
 
   services.glance.enable = true;
   services.glance.settings = {
