@@ -7,24 +7,31 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    git
     ripgrep
     fd
+    file
+    wget
+    ffmpeg
+
+    git
     vim
     arduino-ide
-    signal-desktop
-    keepassxc
-    flameshot
     unzip
-    owncast
-    element-desktop
     imagemagick
     jq
+    hugo
+
     neofetch
-    wget
+    flameshot
     krita
     gimp
-    file
+    vlc
+    transmission_4
+    owncast
+    keepassxc
+
+    signal-desktop
+    element-desktop
   ];
 
   programs.emacs = {
