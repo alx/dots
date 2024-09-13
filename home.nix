@@ -81,32 +81,4 @@
     # See all available kitty themes at: https://github.com/kovidgoyal/kitty-themes/blob/46d9dfe230f315a6a0c62f4687f6b3da20fd05e4/themes.json
   };
 
-  services.glance.enable = true;
-  services.glance.settings = {
-    pages = [
-      {
-        columns = [
-          {
-            size = "small";
-            widgets = [
-              {
-                type = "calendar";
-              }
-              {
-                type = "weather";
-                units = "metrics";
-                hour-format = "24h";
-                location = "Koh Samui Airport";
-                hide-location = true;
-              }
-            ];
-          }
-        ];
-        name = "Home";
-      }
-    ];
-    server = {
-      port = 5678;
-    };
-  };
 }
