@@ -88,7 +88,7 @@
   users.users.alx = {
     isNormalUser = true;
     description = "Alex";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     ];
   };
@@ -141,4 +141,9 @@
   '';
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+
+  # enable the tailscale service
+  services.tailscale.enable = true;
+
+  virtualisation.docker.enable = true;
 }

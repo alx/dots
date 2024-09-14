@@ -12,6 +12,9 @@
     file
     wget
     ffmpeg
+    rsync
+    python3Full
+    python312Packages.flask
 
     git
     vim
