@@ -1,9 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+
   home.username = "alx";
   home.homeDirectory = "/home/alx";
-
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
@@ -15,6 +19,7 @@
     rsync
     python3Full
     python312Packages.flask
+    tmux
 
     git
     vim
@@ -32,6 +37,9 @@
     transmission_4
     owncast
     keepassxc
+    discord
+    matrix-commander
+    freetube
 
     signal-desktop
     element-desktop
