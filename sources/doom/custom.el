@@ -21,7 +21,7 @@
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(objed-cursor-color "#ec423a")
  '(package-selected-packages
-   '(org-modern ox-hugo org-auto-tangle org-inline-anim simple-httpd))
+   '(org-download org-modern ox-hugo org-auto-tangle org-inline-anim simple-httpd))
  '(pdf-view-midnight-colors (cons "#8d9fa1" "#002732"))
  '(rustic-ansi-faces
    ["#002732" "#ec423a" "#93a61a" "#c49619" "#3c98e0" "#e2468f" "#3cafa5" "#8d9fa1"])

@@ -59,3 +59,6 @@
    :recipe (:host github :repo "TobiasZawada/org-yt"))
 (package! openwith)
 (package! ob-mermaid)
+(package! org-roam)
+(package! org-download
+  :recipe (:host github :repo "abo-abo/org-download"))
