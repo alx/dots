@@ -121,6 +121,7 @@
       (re-search-forward "\r?\n\r?\n")
       (buffer-substring-no-properties (point) (point-max)))))
 
+(require 'ol)
 (org-link-set-parameters
  "imghttp"
  :image-data-fun #'org-image-link)
