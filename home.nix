@@ -20,6 +20,7 @@
     python3Full
     python312Packages.flask
     tmux
+    monaspace
 
     git
     vim
@@ -43,6 +44,7 @@
 
     signal-desktop
     element-desktop
+    calibre
   ];
 
   programs.emacs = {
@@ -61,6 +63,7 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/kitty/launch.conf".source = dotfiles/kitty/launch.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
