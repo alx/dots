@@ -64,6 +64,10 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     ".config/kitty/launch.conf".source = dotfiles/kitty/launch.conf;
+    ".config/doom/config.el".source = dotfiles/doom/config.el;
+    ".config/doom/custom.el".source = dotfiles/doom/custom.el;
+    ".config/doom/init.el".source = dotfiles/doom/init.el;
+    ".config/doom/packages.el".source = dotfiles/doom/packages.el;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
