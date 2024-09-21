@@ -29,6 +29,13 @@
     imagemagick
     jq
     hugo
+    uv
+
+    rofi
+    networkmanagerapplet
+    xss-lock
+    pulseaudio
+    papirus-icon-theme
 
     neofetch
     flameshot
@@ -63,7 +70,13 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+
+    ".config/i3/config".source = dotfiles/i3/config;
+    ".config/rofi/config.rasi".source = dotfiles/rofi/config.rasi;
     ".config/kitty/launch.conf".source = dotfiles/kitty/launch.conf;
+
+    ".tmux.conf".source = dotfiles/tmux/tmux.conf;
+
     ".config/doom/config.el".source = dotfiles/doom/config.el;
     ".config/doom/custom.el".source = dotfiles/doom/custom.el;
     ".config/doom/init.el".source = dotfiles/doom/init.el;
