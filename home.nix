@@ -89,12 +89,6 @@
     ".config/doom/init.el".source = dotfiles/doom/init.el;
     ".config/doom/packages.el".source = dotfiles/doom/packages.el;
 
-    # How to enable global dark mode using Home manager in NixOS
-    # https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-in-nixos/28348/2
-    "/etc/xdg/gtk-2.0/gtkrc".source = dotfiles/gtk/gtk2.0;
-    "/etc/xdg/gtk-3.0/settings.ini".source = dotfiles/gtk/settings.ini;
-    "/etc/xdg/gtk-4.0/settings.ini".source = dotfiles/gtk/settings.ini;
-
     #
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
