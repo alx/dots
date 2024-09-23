@@ -53,18 +53,22 @@
   systemd.services."autovt@tty1".enable = false;
 
   services = {
+
     xserver = {
       enable = true;
+
       xkb = {
         layout = "fr";
-        xkbVariant = "";
+        variant = "";
       };
+
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
           i3status
         ];
       };
+
       desktopManager = {
         xterm.enable = false;
         xfce = {
@@ -73,13 +77,18 @@
           enableXfwm = false;
         };
       };
+
       displayManager = {
         lightdm.enable = true;
-        defaultSession = "xfce+i3";
-        autoLogin = {
-          enable = true;
-          user = "alx";
-        };
+      };
+
+    };
+
+    displayManager = {
+      defaultSession = "xfce+i3";
+      autoLogin = {
+        enable = true;
+        user = "alx";
       };
     };
 
@@ -167,4 +176,15 @@
   services.tailscale.enable = true;
 
   virtualisation.docker.enable = true;
+
+  environment.etc = {
+
+    # How to enable global dark mode using Home manager in NixOS
+    # https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-in-nixos/28348/2
+    "xdg/gtk-2.0/gtkrc".source = dotfiles/gtk/gtk2.0;
+    "xdg/gtk-3.0/settings.ini".source = dotfiles/gtk/settings.ini;
+    "xdg/gtk-4.0/settings.ini".source = dotfiles/gtk/settings.ini;
+
+  };
+
 }
