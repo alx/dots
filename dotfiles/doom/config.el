@@ -33,8 +33,11 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-dark+)
-(setq doom-font (font-spec :family "Monaspace Neon" :size 16 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Monaspace Krypton" :size 17))
+(setq doom-font                 (font-spec :family "Monaspace Neon"  :size 26 :weight 'light)
+      doom-symbol-font          doom-font
+      doom-big-font-increment   4
+      doom-variable-pitch-font  (font-spec :family "Monaspace Argon" :size 28 :weight 'light)
+      doom-serif-font           (font-spec :family "Monaspace Neon"  :size 26 :weight 'light))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -43,6 +46,19 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+;;
+;; Basic Task Management with Org | Checklists, TODOs, and Org-Agenda
+;; | Switching to Emacs #5.3
+;;
+;; https://youtu.be/EgOBBiomfGo?list=PLCWojN2sUurCs-6BBMOfXvkor6swGkC5l
+;;
+;; add timestamp when task is done
+(setq org-log-done t)
+;; files included in org-agenda
+(setq org-agenda-files '(
+                         "~/org/notes.org"
+                         ))
 
 (setq org-roam-directory (file-truename "~/org/"))
 (map! :after org-roam
