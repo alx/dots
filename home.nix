@@ -108,12 +108,25 @@
     EDITOR = "emacs";
   };
 
-  programs.home-manager.enable = true;
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+      epkgs.nix-mode
+      epkgs.magit
+    ];
+  };
+
+  programs.firefox.enable = true;
+
+  programs.home-manager = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
     userName = "Alexandre Girard";
     userEmail = "git@alexgirard.com";
+    lfs.enable = true;
   };
 
   programs.kitty = {
