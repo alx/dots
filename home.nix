@@ -23,10 +23,13 @@
     python312Packages.flask
     tmux
     btop
+    polkit
+    killall
+    xscreensaver
+    lxappearance
 
     # dev
     monaspace
-    git
     vim
     arduino-ide
     unzip
@@ -36,6 +39,7 @@
     uv
 
     # desktop
+    i3lock-fancy-rapid
     rofi
     networkmanagerapplet
     dex
@@ -64,17 +68,6 @@
     calibre
 
   ];
-
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs: [
-      epkgs.nix-mode
-      epkgs.magit
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   home.file = {
 
