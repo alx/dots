@@ -98,9 +98,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-;; (use-package! gptel
-;;  :config
-;;  (setq! gptel-api-key "sk-NEW-KEY"))
 ;;
 ;; accept completion from copilot and fallback to company
 ;; (use-package! copilot
@@ -148,6 +145,19 @@
  "imghttps"
  :image-data-fun #'org-image-link)
 
+(use-package! gptel
+  :config
+  (setq
+   gptel-model   "mistralai/Mixtral-8x7B-Instruct-v0.1"
+   gptel-backend
+   (gptel-make-openai "TogetherAI"
+     :host "api.together.xyz"
+     :stream t
+     :models '(;; has many more, check together.ai
+               "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo"
+               "mistralai/Mixtral-8x7B-Instruct-v0.1"
+               "codellama/CodeLlama-13b-Instruct-hf"
+               "codellama/CodeLlama-34b-Instruct-hf"))))
 ;;
 ;; https://github.com/thisirs/openwith
 ;;

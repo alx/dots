@@ -49,9 +49,12 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-;; (package! gptel)
+;; https://github.com/karthink/gptel?tab=readme-ov-file#doom-emacs
+(package! gptel)
+
 ;; (package! copilot
 ;;   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
 (package! git-auto-commit-mode)
 (package! org-modern
    :recipe (:host github :repo "minad/org-modern"))
