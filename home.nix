@@ -37,6 +37,7 @@
     jq
     hugo
     uv
+    mdl # markdown lint
 
     # desktop
     i3lock-fancy-rapid
@@ -61,26 +62,29 @@
     matrix-commander
     signal-desktop
     element-desktop
-    # - sharing
+    # - medias
     transmission_4
     freetube
     owncast
     calibre
+    mpv
+    yt-dlp
 
   ];
 
   home.file = {
 
+    ".Xresources".source = dotfiles/Xresources;
     ".tmux.conf".source = dotfiles/tmux/tmux.conf;
 
     ".config/i3/config".source = dotfiles/i3/config;
     ".config/rofi/config.rasi".source = dotfiles/rofi/config.rasi;
     ".config/kitty/launch.conf".source = dotfiles/kitty/launch.conf;
 
-    ".config/doom/config.el".source = dotfiles/doom/config.el;
-    ".config/doom/custom.el".source = dotfiles/doom/custom.el;
-    ".config/doom/init.el".source = dotfiles/doom/init.el;
-    ".config/doom/packages.el".source = dotfiles/doom/packages.el;
+    ".config/doom" = {
+      source = ./dotfiles/doom;
+      recursive = true;
+    };
 
     #
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in

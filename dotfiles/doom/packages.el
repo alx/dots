@@ -65,3 +65,11 @@
 (package! org-roam)
 (package! org-download
   :recipe (:host github :repo "abo-abo/org-download"))
+
+(package! elfeed)
+(package! elfeed-org)
+(package! elfeed-tube)
+(package! mpv)
+
+(package! hnreader)
+(package! tabspaces)

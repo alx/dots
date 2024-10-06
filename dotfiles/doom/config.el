@@ -109,7 +109,6 @@
 ;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 ;;
 ;;
-;;
 ;; Modern Org Style
 ;; https://github.com/minad/org-modern
 ;;
@@ -191,3 +190,132 @@
 ;;          ))
 ;;   (openwith-mode 1))
 ;;
+
+;; Load elfeed-org
+(require 'elfeed-org)
+
+;; Initialize elfeed-org
+;; This hooks up elfeed-org to read the configuration when elfeed
+;; is started with =M-x elfeed=
+(elfeed-org)
+
+;; Optionally specify a number of files containing elfeed
+;; configuration. If not set then the location below is used.
+;; Note: The customize interface is also supported.
+(setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
+
+;; Troubleshooting techniques for Emacs and Emacs Lisp
+;; https://stackoverflow.com/questions/2087532/troubleshooting-techniques-for-emacs-and-emacs-lisp
+(global-set-key (kbd "C-c C-d")
+        (lambda () (interactive)
+          (setq debug-on-error (if debug-on-error nil t))
+          (message (format "debug-on-error : %s" debug-on-error))))
+
+(use-package elfeed-tube
+  :ensure t ;; or :straight t
+  :after elfeed
+  :demand t
+  :config
+  ;; (setq elfeed-tube-auto-save-p nil) ; default value
+  ;; (setq elfeed-tube-auto-fetch-p t)  ; default value
+  (elfeed-tube-setup)
+
+  :bind (:map elfeed-show-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)
+         :map elfeed-search-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)))
+
+;;
+;; Tab mode
+;;
+
+;; hide buttons
+(setq tab-bar-close-button nil)
+(setq tab-bar-new-button nil)
+
+;; tabspaces - Persistent Tabspaces
+;; https://github.com/mclear-tools/tabspaces
+;; Tabspaces leverages tab-bar.el and project.el (both built into emacs 27+) to create buffer-isolated workspaces (or “tabspaces”) that also integrate with your version-controlled projects. It should work with emacs 27+. It is tested to work with a single frame workflow, but should work with multiple frames as well.
+(use-package tabspaces
+  :commands (tabspaces-switch-or-create-workspace
+             tabspaces-open-or-create-project-and-workspace)
+  :custom
+  (tabspaces-use-filtered-buffers-as-default t)
+  (tabspaces-default-tab "Default")
+  (tabspaces-remove-to-default t)
+  (tabspaces-include-buffers '("*scratch*"))
+  (tabspaces-initialize-project-with-todo t)
+  (tabspaces-todo-file-name "project-todo.org")
+  ;; sessions
+  (tabspaces-session t)
+  (tabspaces-session-auto-restore t)
+  (tab-bar-new-tab-choice "*doom*"))
+
+;; Emacs workspace management with tab-bar mode
+;; https://mihaiolteanu.me/emacs-workspace-management
+;;
+;;  The tab-bar mode enables one to have as many tabs as one wants
+;;  on each Emacs frame. This is similar to what we have in standard
+;;  text editors or in browsers. The great thing is that each tab
+;;  contains not just a single buffer but a window configuration.
+;;  That is, I can split my window into multiple buffers, save it as
+;;  a tab and give it a name. Switch to a different tab and I have a
+;;  different set of buffers split differently. It is the perfect
+;;  place to have a tab containing all my shells, a tab containing
+;;  code and org files and one containing the browser, pdf viewers
+;;  or music players.
+
+
+(defun my/name-tab-by-project-or-default ()
+  "Return project name if in a project, or default tab-bar name if not.
+The default tab-bar name uses the buffer name."
+  (let ((project-name (projectile-project-name)))
+    (if (string= "-" project-name)
+        (tab-bar-tab-name-current)
+      (projectile-project-name))))
+
+(setq tab-bar-mode t)
+(setq tab-bar-show nil)
+(setq tab-bar-new-tab-choice "*doom*")
+(setq tab-bar-tab-name-function #'my/name-tab-by-project-or-default)
+
+(map! :leader
+      (:prefix-map ("TAB" . "Tabs")
+       :desc "Switch tab" "TAB" #'tab-bar-select-tab-by-name
+       :desc "New tab" "n" #'tab-bar-new-tab
+       :desc "Next tab" "<next>" #'tab-next
+       :desc "Previous tab" "<prior>" #'tab-previous
+       :desc "Rename tab" "r" #'tab-bar-rename-tab
+       :desc "Rename tab by name" "R" #'tab-bar-rename-tab-by-name
+       :desc "Close tab" "d" #'tab-bar-close-tab
+       :desc "Close tab by name" "D" #'tab-bar-close-tab-by-name
+       :desc "Close other tabs" "1" #'tab-bar-close-other-tabs))
+
+;; re-define the relevant segment of Doom modeline so that it always shows
+;; the name of the tab, whether explicitly set or not
+(after! doom-modeline
+  (doom-modeline-def-segment workspace-name
+  "The current workspace name or number.
+Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
+  (when doom-modeline-workspace-name
+    (when-let
+        ((name (cond
+                ((and (bound-and-true-p eyebrowse-mode)
+                      (< 1 (length (eyebrowse--get 'window-configs))))
+                 (assq-delete-all 'eyebrowse-mode mode-line-misc-info)
+                 (when-let*
+                     ((num (eyebrowse--get 'current-slot))
+                      (tag (nth 2 (assoc num (eyebrowse--get 'window-configs)))))
+                   (if (< 0 (length tag)) tag (int-to-string num))))
+                (t
+                 (let* ((current-tab (tab-bar--current-tab))
+                        (tab-index (tab-bar--current-tab-index))
+                        (explicit-name (alist-get 'name current-tab))
+                        (tab-name (alist-get 'name current-tab)))
+                   (if explicit-name tab-name (+ 1 tab-index)))))))
+      (propertize (format " %s " name) 'face
+                  (if (doom-modeline--active)
+                      'doom-modeline-buffer-major-mode
+                    'mode-line-inactive))))))
