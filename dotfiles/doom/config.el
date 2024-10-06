@@ -285,8 +285,8 @@ The default tab-bar name uses the buffer name."
       (:prefix-map ("TAB" . "Tabs")
        :desc "Switch tab" "TAB" #'tab-bar-select-tab-by-name
        :desc "New tab" "n" #'tab-bar-new-tab
-       :desc "Next tab" "<next>" #'tab-next
-       :desc "Previous tab" "<prior>" #'tab-previous
+       :desc "Next tab" "<next>" #'tab-bar-switch-to-next-tab
+       :desc "Previous tab" "<prior>" #'tab-bar-switch-to-prev-tab
        :desc "Rename tab" "r" #'tab-bar-rename-tab
        :desc "Rename tab by name" "R" #'tab-bar-rename-tab-by-name
        :desc "Close tab" "d" #'tab-bar-close-tab
