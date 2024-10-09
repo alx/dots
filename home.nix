@@ -78,6 +78,11 @@
     ".tmux.conf".source = dotfiles/tmux/tmux.conf;
 
     ".config/i3/config".source = dotfiles/i3/config;
+    ".config/i3/tree" = {
+      source = dotfiles/i3/tree;
+      recursive = true;
+    };
+
     ".config/rofi/config.rasi".source = dotfiles/rofi/config.rasi;
     ".config/kitty/launch.conf".source = dotfiles/kitty/launch.conf;
 

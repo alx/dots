@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+dotfiles/i3/tree/workspace-*.json

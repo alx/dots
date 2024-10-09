@@ -153,10 +153,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+ccedilla move container to workspace number $ws9
 bindsym $mod+Shift+agrave move container to workspace number $ws10
 
-bindsym $mod+Shift+r exec --no-startup-id i3-msg reload
-bindsym $mod+Shift+p exec --no-startup-id systemctl poweroff -i, mode "default"
-bindsym $mod+Shift+b exec --no-startup-id systemctl reboot, mode "default"
-
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -193,6 +189,38 @@ bar {
         status_command i3status
 }
 
+# workspace tree
+#
+#   - save command:
+#   ${HOME}/code/dots/dotfiles/i3/tree/save-tree.sh
+#
+# append workspace tree
+set $saved_tree_path "${HOME}/.config/i3/tree"
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ${saved_tree_path}/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ${saved_tree_path}/workspace-2.json'"
+exec --no-startup-id "i3-msg 'workspace 3; append_layout ${saved_tree_path}/workspace-3.json'"
+exec --no-startup-id "i3-msg 'workspace 4; append_layout ${saved_tree_path}/workspace-4.json'"
+exec --no-startup-id "i3-msg 'workspace 5; append_layout ${saved_tree_path}/workspace-5.json'"
+exec --no-startup-id "i3-msg 'workspace 6; append_layout ${saved_tree_path}/workspace-6.json'"
+exec --no-startup-id "i3-msg 'workspace 7; append_layout ${saved_tree_path}/workspace-7.json'"
+exec --no-startup-id "i3-msg 'workspace 8; append_layout ${saved_tree_path}/workspace-8.json'"
+exec --no-startup-id "i3-msg 'workspace 9; append_layout ${saved_tree_path}/workspace-9.json'"
+
+# startup programs
+exec --no-startup-id kitty              # workspace 1
+exec --no-startup-id emacsclient        # workspace 2
+exec --no-startup-id firefox            # workspace 3
+                                        # workspace 4
+                                        # workspace 5
+exec --no-startup-id freetube           # workspace 6
+exec --no-startup-id signal-desktop     # workspace 7
+exec --no-startup-id element-desktop    # workspace 7
+                                        # workspace 8
+exec --no-startup-id keepassxc          # workspace 9
+
+bindsym $mod+Shift+r exec --no-startup-id i3-msg reload
+bindsym $mod+Shift+p exec --no-startup-id systemctl poweroff -i, mode "default"
+bindsym $mod+Shift+b exec --no-startup-id systemctl reboot, mode "default"
 #
 # Slow application startup
 # https://discourse.nixos.org/t/slow-application-startup/29857/13
