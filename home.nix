@@ -27,6 +27,7 @@
     killall
     xscreensaver
     lxappearance
+    systemctl-tui
 
     # dev
     monaspace
