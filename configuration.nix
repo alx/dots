@@ -54,6 +54,10 @@
 
   services = {
 
+    logind = {
+      lidSwitch = "hibernate";
+    };
+
     xserver = {
       enable = true;
 
