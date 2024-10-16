@@ -181,8 +181,12 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  # Auto Hibernate on low battery
+  # https://old.reddit.com/r/i3wm/comments/myg9pt/autohibernate_laptop_on_low_battery/
+  #
   services.udev.extraRules = ''
     KERNEL=="ttyACM0", MODE:="666"
+    SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]", RUN+="${pkgs.systemd}/bin/systemctl hibernate"
   '';
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
