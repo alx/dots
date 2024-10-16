@@ -136,7 +136,7 @@
     enable = true;
     font = {
       name = "Monaspace Argon";
-      size = 18;
+      size = 14;
     };
     theme = "Catppuccin-Macchiato";
     #Also available: Catppuccin-Frappe Catppuccin-Latte Catppuccin-Macchiato Catppuccin-Mocha
