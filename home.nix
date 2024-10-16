@@ -20,7 +20,10 @@
     ffmpeg
     rsync
     python3Full
+    python312Packages.pip
     python312Packages.flask
+    python312Packages.pandas
+    python312Packages.conda
     tmux
     btop
     polkit
@@ -28,6 +31,9 @@
     xscreensaver
     lxappearance
     systemctl-tui
+    xorg.xev
+    lazygit
+    sox
 
     # dev
     monaspace
@@ -64,12 +70,14 @@
     signal-desktop
     element-desktop
     # - medias
-    transmission_4
+    transmission_4-qt
     freetube
     owncast
     calibre
     mpv
     yt-dlp
+    mcomix
+    yacreader
 
   ];
 
@@ -111,6 +119,10 @@
     EDITOR = "emacs";
   };
 
+  home.shellAliases = {
+    lg = "lazygit";
+  };
+
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
@@ -139,7 +151,7 @@
       size = 14;
     };
     theme = "Catppuccin-Macchiato";
-    #Also available: Catppuccin-Frappe Catppuccin-Latte Catppuccin-Macchiato Catppuccin-Mocha
+    # Also available: Catppuccin-Frappe Catppuccin-Latte Catppuccin-Macchiato Catppuccin-Mocha
     # See all available kitty themes at: https://github.com/kovidgoyal/kitty-themes/blob/46d9dfe230f315a6a0c62f4687f6b3da20fd05e4/themes.json
   };
 
