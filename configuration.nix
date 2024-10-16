@@ -88,6 +88,10 @@
 
     };
 
+    # Inadvertent touchpad double-clicks
+    # https://discourse.nixos.org/t/inadvertent-touchpad-double-clicks/21084/1
+    libinput.touchpad.tapping = false;
+
     displayManager = {
       defaultSession = "xfce+i3";
       autoLogin = {
