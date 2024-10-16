@@ -74,7 +74,11 @@ bindsym $mod+Shift+Q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-bindcode $mod+40 exec "rofi -show drun"
+#
+# 65 is keycode for space
+#
+bindcode $mod+65 exec "rofi -show drun"
+#
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
@@ -118,10 +122,10 @@ bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+t floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+q focus parent
@@ -131,15 +135,15 @@ bindsym $mod+q focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1 "1. Term"
+set $ws2 "2. Emacs"
+set $ws3 "3. Web"
+set $ws4 "4. Gimp"
+set $ws5 "5. "
+set $ws6 "6. Tube"
+set $ws7 "7. Chat"
+set $ws8 "8. "
+set $ws9 "9. Pass"
 set $ws10 "10"
 
 # switch to workspace
@@ -167,7 +171,7 @@ bindsym $mod+Shift+ccedilla move container to workspace number $ws9
 bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -208,16 +212,16 @@ bar {
 #   ${HOME}/code/dots/dotfiles/i3/tree/save-tree.sh
 #
 # append workspace tree
-set $saved_tree_path "${HOME}/.config/i3/tree"
-exec --no-startup-id "i3-msg 'workspace 1; append_layout ${saved_tree_path}/workspace-1.json'"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout ${saved_tree_path}/workspace-2.json'"
-exec --no-startup-id "i3-msg 'workspace 3; append_layout ${saved_tree_path}/workspace-3.json'"
-exec --no-startup-id "i3-msg 'workspace 4; append_layout ${saved_tree_path}/workspace-4.json'"
-exec --no-startup-id "i3-msg 'workspace 5; append_layout ${saved_tree_path}/workspace-5.json'"
-exec --no-startup-id "i3-msg 'workspace 6; append_layout ${saved_tree_path}/workspace-6.json'"
-exec --no-startup-id "i3-msg 'workspace 7; append_layout ${saved_tree_path}/workspace-7.json'"
-exec --no-startup-id "i3-msg 'workspace 8; append_layout ${saved_tree_path}/workspace-8.json'"
-exec --no-startup-id "i3-msg 'workspace 9; append_layout ${saved_tree_path}/workspace-9.json'"
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ${HOME}/.config/i3/tree/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ${HOME}/.config/i3/tree/workspace-2.json'"
+exec --no-startup-id "i3-msg 'workspace 3; append_layout ${HOME}/.config/i3/tree/workspace-3.json'"
+exec --no-startup-id "i3-msg 'workspace 4; append_layout ${HOME}/.config/i3/tree/workspace-4.json'"
+exec --no-startup-id "i3-msg 'workspace 5; append_layout ${HOME}/.config/i3/tree/workspace-5.json'"
+exec --no-startup-id "i3-msg 'workspace 6; append_layout ${HOME}/.config/i3/tree/workspace-6.json'"
+exec --no-startup-id "i3-msg 'workspace 7; append_layout ${HOME}/.config/i3/tree/workspace-7.json'"
+exec --no-startup-id "i3-msg 'workspace 8; append_layout ${HOME}/.config/i3/tree/workspace-8.json'"
+exec --no-startup-id "i3-msg 'workspace 9; append_layout ${HOME}/.config/i3/tree/workspace-9.json'"
+bindsym $mod+Shift+t exec --no-startup-id ${HOME}/.config/i3/tree/save-tree.sh, mode "default"
 
 # startup programs
 exec --no-startup-id kitty              # workspace 1
@@ -232,7 +236,7 @@ exec --no-startup-id element-desktop    # workspace 7
 exec --no-startup-id keepassxc          # workspace 9
 
 bindsym $mod+Shift+r exec --no-startup-id i3-msg reload
-bindsym $mod+Shift+p exec --no-startup-id systemctl poweroff -i, mode "default"
+bindsym $mod+Shift+p exec --no-startup-id systemctl hibernate -i, mode "default"
 bindsym $mod+Shift+b exec --no-startup-id systemctl reboot, mode "default"
 #
 # Slow application startup
