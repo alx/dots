@@ -20,10 +20,6 @@
     ffmpeg
     rsync
     python3Full
-    python312Packages.pip
-    python312Packages.flask
-    python312Packages.pandas
-    python312Packages.conda
     tmux
     btop
     polkit
