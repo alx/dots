@@ -320,3 +320,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
                   (if (doom-modeline--active)
                       'doom-modeline-buffer-major-mode
                     'mode-line-inactive))))))
+
+;; treemacs-follow-mode is a global minor mode which allows
+;; the treemacs view to always move its focus to the currently selected file.
+;; This mode runs on an idle timer - the exact duration of inactivity (in seconds)
+;; before a move is called is determined by treemacs-tag-follow-delay.
+elisp (after! treemacs (treemacs-follow-mode 1))
