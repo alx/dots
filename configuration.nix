@@ -35,18 +35,9 @@
     LC_TIME = "en_US.utf-8";
   };
 
-  # # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
+  # https://nixos.wiki/wiki/I3
+  # links /libexec from derivations to /run/current-system/sw
+  environment.pathsToLink = [ "/libexec" ];
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
