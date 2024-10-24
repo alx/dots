@@ -198,7 +198,8 @@
   # enable the tailscale service
   services.tailscale.enable = true;
 
-  virtualisation.docker.enable = true;
+  # enable docker
+  # virtualisation.docker.enable = true;
 
   environment.etc = {
 
