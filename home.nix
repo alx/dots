@@ -30,6 +30,7 @@
     xorg.xev
     lazygit
     sox
+    ncdu
 
     # dev
     monaspace
@@ -74,6 +75,9 @@
     yt-dlp
     mcomix
     yacreader
+    # - games
+    mednafen
+    mednaffe
 
   ];
 
