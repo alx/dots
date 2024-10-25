@@ -73,3 +73,6 @@
 
 (package! hnreader)
 (package! tabspaces)
+(package! yankpad)
+
+(package! ox-pandoc)
