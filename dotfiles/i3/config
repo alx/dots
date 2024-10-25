@@ -71,6 +71,8 @@ bindsym $mod+Shift+Return exec kitty
 # kill focused window
 bindsym $mod+Shift+Q kill
 
+# screenshot to inbox
+bindsym $mod+s exec /home/alx/bin/screenshot2org.sh
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
