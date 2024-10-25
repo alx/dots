@@ -326,3 +326,15 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; This mode runs on an idle timer - the exact duration of inactivity (in seconds)
 ;; before a move is called is determined by treemacs-tag-follow-delay.
 elisp (after! treemacs (treemacs-follow-mode 1))
+(use-package yankpad
+  :ensure t
+  :defer 10
+  :init
+  (setq yankpad-file "~/org/ref_emacs_yankpad.org")
+  :config
+  (bind-key "<f7>" 'yankpad-map)
+  (bind-key "<f12>" 'yankpad-expand)
+  ;; If you want to complete snippets using company-mode
+  (add-to-list 'company-backends #'company-yankpad)
+  ;; If you want to expand snippets with hippie-expand
+  (add-to-list 'hippie-expand-try-functions-list #'yankpad-expand))
