@@ -31,6 +31,7 @@
     lazygit
     sox
     ncdu
+    xclip
 
     # dev
     monaspace
@@ -51,6 +52,7 @@
     xss-lock
     pulseaudio
     papirus-icon-theme
+    alsa-utils
 
     # softwares
     # - utils
@@ -97,6 +99,11 @@
 
     ".config/doom" = {
       source = ./dotfiles/doom;
+      recursive = true;
+    };
+
+    "bin" = {
+      source = ./dotfiles/bin;
       recursive = true;
     };
 
