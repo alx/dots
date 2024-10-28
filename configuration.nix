@@ -123,6 +123,13 @@
       enable = true;
       package = pkgs.emacs;
     };
+
+    syncthing = {
+        enable = true;
+        user = "alx";
+        dataDir = "/home/alx/org";    # Default folder for new synced folders
+        configDir = "/home/alx/org/outbox/syncthing";   # Folder for Syncthing's settings and keys
+    };
   };
 
   # Configure console keymap
