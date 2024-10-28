@@ -62,9 +62,14 @@
    :recipe (:host github :repo "TobiasZawada/org-yt"))
 (package! openwith)
 (package! ob-mermaid)
-(package! org-roam)
 (package! org-download
   :recipe (:host github :repo "abo-abo/org-download"))
+(package! org-imgtog
+  :recipe (:host github :repo "gaoDean/org-imgtog"))
+(package! org-remoteimg
+  :recipe (:host github :repo "gaoDean/org-remoteimg"))
+(package! org-rainbow-tags
+  :recipe (:host github :repo "KaratasFurkan/org-rainbow-tags"))
 
 (package! elfeed)
 (package! elfeed-org)
