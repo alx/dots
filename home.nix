@@ -32,6 +32,7 @@
     sox
     ncdu
     xclip
+    pstree
 
     # dev
     monaspace
@@ -96,6 +97,7 @@
 
     ".config/rofi/config.rasi".source = dotfiles/rofi/config.rasi;
     ".config/kitty/launch.conf".source = dotfiles/kitty/launch.conf;
+    ".config/flameshot/flameshot.ini".source = dotfiles/flameshot/flameshot.ini;
 
     ".config/doom" = {
       source = ./dotfiles/doom;
