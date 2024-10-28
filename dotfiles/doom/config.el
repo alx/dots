@@ -312,6 +312,17 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
                       'doom-modeline-buffer-major-mode
                     'mode-line-inactive))))))
 
+;; optional: set this to wherever you want the cache to be stored
+;; (setq url-cache-directory "~/.cache/emacs/url")
+
+(setq org-display-remote-inline-images 'cache) ;; enable caching
+
+;; or this if you don't want caching
+;; (setq org-display-remote-inline-images 'download)
+
+;; or this if you want to disable this plugin
+;; (setq org-display-remote-inline-images 'skip)
+
 ;; treemacs-follow-mode is a global minor mode which allows
 ;; the treemacs view to always move its focus to the currently selected file.
 ;; This mode runs on an idle timer - the exact duration of inactivity (in seconds)
