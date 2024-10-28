@@ -6,8 +6,18 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # hibernate script
+      # I found a post about suspending and then going into hibernate that included
+      # a really clever script. Turns out that with NixOS this is even esaier to
+      # coordinate as you have systemd so can have a before and after service.
+      # I just include this in my /etc/nixos/configuration.nix file and nixos-rebuild;
+      # then a systemctl suspend or a close of the lid will cause the hibernate timer to be set.
+      # source: https://gist.github.com/mattdenner/befcf099f5cfcc06ea04dcdd4969a221
+      ./suspend-and-hibernate.nix
     ];
 
   # Bootloader.
