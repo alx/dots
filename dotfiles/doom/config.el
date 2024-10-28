@@ -340,3 +340,19 @@ elisp (after! treemacs (treemacs-follow-mode 1))
   (add-to-list 'company-backends #'company-yankpad)
   ;; If you want to expand snippets with hippie-expand
   (add-to-list 'hippie-expand-try-functions-list #'yankpad-expand))
+
+;;
+;; https://emacs.stackexchange.com/questions/4187/strip-text-properties-in-savehist
+(defun unpropertize-kill-ring ()
+  (setq kill-ring (mapcar 'substring-no-properties kill-ring)))
+
+(add-hook 'kill-emacs-hook 'unpropertize-kill-ring)
+
+;; #9409
+;; the issue could be that save-interprogram-paste-before-kill means a large clipboard which becomes part of savehist:
+;; #1369 (comment)
+(setq history-length 100)
+(put 'minibuffer-history 'history-length 50)
+(put 'evil-ex-history 'history-length 50)
+(put 'kill-ring 'history-length 25)
+(savehist-mode -1)
