@@ -56,16 +56,7 @@
 ;; add timestamp when task is done
 (setq org-log-done t)
 ;; files included in org-agenda
-(setq org-agenda-files '(
-                         "~/org/notes.org"
-                         ))
-
-(setq org-roam-directory (file-truename "~/org/"))
-(map! :after org-roam
-      :map org-roam-mode-map
-      :prefix "C-c n"
-      "f" #'org-roam-node-find
-      "i" #'org-roam-node-insert)
+(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
