@@ -142,6 +142,7 @@
    gptel-backend
    (gptel-make-openai "TogetherAI"
      :host "api.together.xyz"
+     ;; af8285: obsolete key
      :key "af8285ed0e6ad8172e550e5318caaf87bfd73295a61c18e612f018b6b984a176"
      :stream t
      :models '(;; has many more, check together.ai
@@ -327,7 +328,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; the treemacs view to always move its focus to the currently selected file.
 ;; This mode runs on an idle timer - the exact duration of inactivity (in seconds)
 ;; before a move is called is determined by treemacs-tag-follow-delay.
-elisp (after! treemacs (treemacs-follow-mode 1))
+(after! treemacs (treemacs-follow-mode 1))
+
 (use-package yankpad
   :ensure t
   :defer 10
