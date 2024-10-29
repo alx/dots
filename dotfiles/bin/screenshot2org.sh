@@ -8,7 +8,7 @@ _alarm() {
 }
 
 _alarm 800 150
-flameshot full
+flameshot full -p /home/alx/org/inbox/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
 
 source /home/alx/org/.venv/bin/activate
 python3 /home/alx/org/bin/process_inbox_screenshots.py
