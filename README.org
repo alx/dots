@@ -7,16 +7,28 @@
 2. install `home-manager`
 3. run:
 
-#+begin_src
+#+begin_src bash :no-web :silent
 git clone git@github.com:alx/dots.git 
 
 cd dots
 sudo ln -sf $PWD/configuration.nix /etc/nixos/configuration.nix
 ln -sf $PWD/home.nix $HOME/.config/home-manager/home.nix
+#+end_src
 
+* Usage
+
+*** configuration.nix
+
+#+begin_src bash :no-web :silent
 sudo nixos-rebuild switch
+#+end_src
+
+*** home.nix
+
+#+begin_src bash :no-web :silent
 home-manager switch
 #+end_src
+
 
 * cheatsheet
 
