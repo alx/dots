@@ -358,3 +358,6 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (put 'evil-ex-history 'history-length 50)
 (put 'kill-ring 'history-length 25)
 (savehist-mode -1)
+
+(use-package org-rainbow-tags
+  :ensure t)
