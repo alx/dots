@@ -138,18 +138,19 @@
 (use-package! gptel
   :config
   (setq
-   gptel-model   "mistralai/Mixtral-8x7B-Instruct-v0.1"
-   gptel-backend
-   (gptel-make-openai "TogetherAI"
-     :host "api.together.xyz"
-     ;; af8285: obsolete key
-     :key "af8285ed0e6ad8172e550e5318caaf87bfd73295a61c18e612f018b6b984a176"
-     :stream t
-     :models '(;; has many more, check together.ai
-               "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo"
-               "mistralai/Mixtral-8x7B-Instruct-v0.1"
-               "codellama/CodeLlama-13b-Instruct-hf"
-               "codellama/CodeLlama-34b-Instruct-hf"))))
+   gptel-model   "gpt4o"
+   ;; gptel-backend
+   ;; (gptel-make-openai "TogetherAI"
+   ;;   :host "api.together.xyz"
+   ;;   ;; af8285: obsolete key
+   ;;   :key "af8285ed0e6ad8172e550e5318caaf87bfd73295a61c18e612f018b6b984a176"
+   ;;   :stream t
+   ;;   :models '(;; has many more, check together.ai
+   ;;             "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo"
+   ;;             "mistralai/Mixtral-8x7B-Instruct-v0.1"
+   ;;             "codellama/CodeLlama-13b-Instruct-hf"
+   ;;             "codellama/CodeLlama-34b-Instruct-hf"))
+   ))
 ;;
 ;; https://github.com/thisirs/openwith
 ;;
