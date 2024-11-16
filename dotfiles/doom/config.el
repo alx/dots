@@ -362,3 +362,26 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 (use-package org-rainbow-tags
   :ensure t)
+
+;; Killing ansi-term says: "... has a running process"
+;; https://emacs.stackexchange.com/questions/17005/killing-ansi-term-says-has-a-running-process
+(defun set-no-process-query-on-exit ()
+    (let ((proc (get-buffer-process (current-buffer))))
+          (when (processp proc)
+	          (set-process-query-on-exit-flag proc nil))))
+
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+
+;; copy links OUT of org-mode
+;; https://emacs.stackexchange.com/questions/3981/how-to-copy-links-out-of-org-mode
+(defun farynaio/org-link-copy (&optional arg)
+  "Extract URL from org-mode link and add it to kill ring."
+  (interactive "P")
+  (let* ((link (org-element-lineage (org-element-context) '(link) t))
+          (type (org-element-property :type link))
+          (url (org-element-property :path link))
+          (url (concat type ":" url)))
+    (kill-new url)
+    (message (concat "Copied URL: " url))))
+
+(define-key org-mode-map (kbd "C-x C-l") 'farynaio/org-link-copy)
