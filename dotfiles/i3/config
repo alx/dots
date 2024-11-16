@@ -203,16 +203,16 @@ exec --no-startup-id "i3-msg 'workspace 9; append_layout ${HOME}/.config/i3/tree
 bindsym $mod+Shift+t exec --no-startup-id ${HOME}/.config/i3/tree/save-tree.sh, mode "default"
 
 # startup programs
-exec --no-startup-id kitty              # workspace 1
-exec --no-startup-id emacsclient        # workspace 2
-exec --no-startup-id firefox            # workspace 3
-                                        # workspace 4
-                                        # workspace 5
-exec --no-startup-id freetube           # workspace 6
-exec --no-startup-id signal-desktop     # workspace 7
-exec --no-startup-id element-desktop    # workspace 7
-                                        # workspace 8
-exec --no-startup-id keepassxc          # workspace 9
+exec --no-startup-id kitty                      # workspace 1
+exec --no-startup-id emacsclient                # workspace 2
+exec --no-startup-id firefox --marionnette      # workspace 3
+                                                # workspace 4
+                                                # workspace 5
+exec --no-startup-id freetube                   # workspace 6
+exec --no-startup-id signal-desktop             # workspace 7
+exec --no-startup-id element-desktop            # workspace 7
+                                                # workspace 8
+exec --no-startup-id keepassxc                  # workspace 9
 
 bindsym $mod+Shift+r exec --no-startup-id i3-msg reload
 bindsym $mod+Shift+p exec --no-startup-id systemctl hibernate -i, mode "default"
