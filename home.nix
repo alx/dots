@@ -18,6 +18,7 @@
     file
     wget
     ffmpeg
+    espeak-ng
     rsync
     python3Full
     tmux
@@ -64,6 +65,7 @@
     krita
     gimp
     vlc
+    geeqie
     # - chat
     discord
     matrix-commander
