@@ -6,19 +6,39 @@ _alarm() {
   \sleep 0.${2}s
   \kill -9 $pid
 }
-echo "start" >> /home/alx/screenshot.log
 
-# paste current browser url to clipboard
-browser_url=$(/home/alx/bin/get_url.py)
-echo $browser_url >> /home/alx/screenshot.log
-echo $browser_url | xclip -sel clip
+wm_output=$(wmctrl -lx | grep "Navigator.firefox")
+window_title=$(echo "$wm_output" | sed -e 's/.*slim //' -e 's/ — Mozilla Firefox$//')
 
-_alarm 800 150
+window_id=$(xdotool search --name "Mozilla" | head -n1)
+
+echo $window_id
+echo $window_title
+
+sleep_duration=0.1
+xdotool windowactivate "$window_id"
+xdotool sleep $sleep_duration keydown Ctrl sleep $sleep_duration keydown l sleep $sleep_duration keyup Ctrl sleep $sleep_duration keyup l
+xdotool sleep $sleep_duration keydown Ctrl sleep $sleep_duration keydown c sleep $sleep_duration keyup Ctrl sleep $sleep_duration keyup c
+xdotool sleep $sleep_duration key Escape
+browser_url=$(xsel -ob)
+
+_alarm 800 050
+
 screenshot_root_path=/home/alx/org/inbox/screenshots/
 screenshot_path="$screenshot_root_path"$(date +%Y-%m-%d_%H-%M-%S).png
 flameshot full -p $screenshot_path
 
+_alarm 1600 050
+
+echo $browser_url
+echo $screenshot_path
+echo $window_title
+
 source /home/alx/org/.venv/bin/activate
-python3 /home/alx/org/bin/process_inbox_screenshots.py -u $browser_url -s $screenshot_path 2&>1
+python3 /home/alx/org/bin/process_inbox_screenshots.py \
+  -u $browser_url \
+  -s $screenshot_path \
+  -t $window_title \
+  2&>1
 
 _alarm 1000 200
