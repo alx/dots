@@ -81,3 +81,4 @@
 (package! yankpad)
 
 (package! ox-pandoc)
+(package! org-contrib)
