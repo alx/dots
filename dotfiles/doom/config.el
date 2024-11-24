@@ -183,20 +183,29 @@
   (setq gptel-directives (gjg/gptel-build-directives "~/code/AIPIHKAL/system-prompts/"))
   :config
   (setq
-   gptel-model   "gpt4o"
-   ;; gptel-backend
-   ;; (gptel-make-openai "TogetherAI"
-   ;;   :host "api.together.xyz"
-   ;;   ;; af8285: obsolete key
-   ;;   :key "af8285ed0e6ad8172e550e5318caaf87bfd73295a61c18e612f018b6b984a176"
-   ;;   :stream t
-   ;;   :models '(;; has many more, check together.ai
-   ;;             "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo"
-   ;;             "mistralai/Mixtral-8x7B-Instruct-v0.1"
-   ;;             "codellama/CodeLlama-13b-Instruct-hf"
-   ;;             "codellama/CodeLlama-34b-Instruct-hf"))
-   ))
+   gptel-model 'claude-3-opus-20240229 ;  "claude-3-opus-20240229" also available
+   gptel-backend (gptel-make-anthropic "Claude"
+                   :stream t :key "sk-ant-..."
+                   )))
+;; (setq
+;;  gptel-model   "gpt4o"
+;;  gptel-api-key "sk-proj-..."
+;;  ))
+;; gptel-backend
+;; (gptel-make-openai "TogetherAI"
+;;   :host "api.together.xyz"
+;;   ;; af8285: obsolete key
+;;   :key "af8285ed0e6ad8172e550e5318caaf87bfd73295a61c18e612f018b6b984a176"
+;;   :stream t
+;;   :models '(;; has many more, check together.ai
+;;             "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo"
+;;             "mistralai/Mixtral-8x7B-Instruct-v0.1"
+;;             "codellama/CodeLlama-13b-Instruct-hf"
+;;             "codellama/CodeLlama-34b-Instruct-hf"))
 ;;
+
+
+
 ;; https://github.com/thisirs/openwith
 ;;
 ;; Ten Org-mode Extensions You Need to Install!
@@ -430,3 +439,6 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
     (message (concat "Copied URL: " url))))
 
 (define-key org-mode-map (kbd "C-x C-l") 'farynaio/org-link-copy)
+
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
