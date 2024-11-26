@@ -143,7 +143,7 @@
                    :stream t :key "sk-ant-..."
                    ))
   (let ((build-directives-fun "~/code/AIPIHKAL/gptel-build-directives.el"))
-    (when (f-exists-p build-directives-fun)
+    (when (file-exists-p build-directives-fun)
       (load build-directives-fun)
       ;; (custom-set-variables '(gptel-directives
       (setq gptel-directives (gjg/gptel-build-directives "~/code/AIPIHKAL/system-prompts/")
