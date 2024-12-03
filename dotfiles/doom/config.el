@@ -141,7 +141,7 @@
    ;; remove distinguish between user messages and LLM responses
    gptel-track-response nil ; remove distinguish between user messages and LLM responses
    ;; setup Claude backend
-   gptel-model 'claude-3-5-sonnet-202406-20
+   gptel-model 'claude-3-5-sonnet-20240620
    gptel-backend (gptel-make-anthropic "Claude"
                    :stream t :key "sk-ant-..."
                    ))
